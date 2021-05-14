@@ -17,8 +17,9 @@ import freelansoft.dynasoft.R
 import java.util.*
 import kotlin.math.log
 import kotlinx.android.synthetic.main.main_fragment.*
+import java.text.SimpleDateFormat
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), DateSelected {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -43,7 +44,7 @@ class MainFragment : Fragment() {
         }
     }
 
-    class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener{
+    class DatePickerFragment(val dateSelected: DateSelected): DialogFragment(), DatePickerDialog.OnDateSetListener{
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -53,15 +54,39 @@ class MainFragment : Fragment() {
         }
 
         override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+            dateSelected.receivedDate(year, month, dayOfMonth)
             Log.d(TAG,"Got the date")
+        }
+
+        companion object{
+            fun newInstance() = MainFragment()
         }
 
 
     }
 
     private fun showDatePicker() {
-        val datePickerFragment = DatePickerFragment()
+        val datePickerFragment = DatePickerFragment(this)
         datePickerFragment.show(fragmentManager!!, "datePicker")
     }
 
+    /**
+     * This is the function that will be invoked in our fragment when a user picks a date
+     */
+    override fun receivedDate(year: Int, month: Int, dayOfMonth: Int) {
+        val calendar = GregorianCalendar()
+        calendar.set(Calendar.DAY_OF_YEAR, dayOfMonth)
+        calendar.set(Calendar.MONTH, month)
+        calendar.set(Calendar.YEAR, year)
+
+        val viewFormatter = SimpleDateFormat("dd-MMM-YYYY")
+        var viewFormatterDate = viewFormatter.format(calendar.getTime())
+        btnTextDate.setText(viewFormatterDate)
+    }
+
+}
+
+interface DateSelected {
+    fun receivedDate(year: Int, month: Int, dayOfMonth: Int)
+    
 }

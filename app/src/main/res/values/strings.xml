@@ -14,6 +14,7 @@
     <string name="fieldTextDate">Field Text Date</string>
     <string name="btnTextDate">Button Text Date</string>
     <string name="tittleText">Tittle Text</string>
+    <string name="date_field">Date Field</string>
 
     <string-array name="where">
         <item>Server</item>
