@@ -2,10 +2,13 @@ package freelansoft.dynasoft
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import freelansoft.dynasoft.R
 import freelansoft.dynasoft.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,6 +17,10 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                     .replace(R.id.container, MainFragment.newInstance())
                     .commitNow()
+
+
         }
     }
+
+
 }

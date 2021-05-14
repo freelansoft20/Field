@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Dynasoft</string>
+<!--    <string name="date">Date</string>-->
+    <string name="fieldDate">Field Date</string>
+    <string name="ok">OK</string>
+    <string name="supervisor">Supervisor</string>
+    <string name="task">Task</string>
+<!--    <string name="date">Date</string>-->
+    <string name="location">Location</string>
+    <string name="date">Date</string>
+    <string name="logout">Logout</string>
+    <string name="report">Report</string>
+    <string name="task_entry">Task Entry</string>
+    <string name="fieldTextDate">Field Text Date</string>
+    <string name="btnTextDate">Button Text Date</string>
+    <string name="tittleText">Tittle Text</string>
+
+    <string-array name="where">
+        <item>Server</item>
+        <item>Reception</item>
+        <item>Cashier</item>
+        <item>Consultation</item>
+        <item>Mutuel</item>
+        <item>Pharmacy</item>
+        <item>Labo</item>
+        <item>Maternity</item>
+        <item>CPN</item>
+        <item>Sante Mental</item>
+        <item>Administration </item>
+    </string-array>
+    <string-array name="users">
+        <item>Gandi</item>
+        <item>Felix</item>
+        <item>Mustapha</item>
+        <item>Tit Annick</item>
+        <item>Festus</item>
+    </string-array>
 </resources>
