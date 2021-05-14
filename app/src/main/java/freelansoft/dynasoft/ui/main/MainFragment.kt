@@ -16,7 +16,7 @@ import androidx.fragment.app.DialogFragment
 import freelansoft.dynasoft.R
 import java.util.*
 import kotlin.math.log
-//import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -38,10 +38,9 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
-//        val btnDate:Button
-//        btnDate.setOnClickListener {
-//            showDatePicker()
-//        }
+        btnTextDate.setOnClickListener {
+            showDatePicker()
+        }
     }
 
     class DatePickerFragment: DialogFragment(), DatePickerDialog.OnDateSetListener{
