@@ -1,5 +1,6 @@
 package freelansoft.dynasoft
 
+import kotlinx.coroutines.Job
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -16,7 +17,7 @@ class ExampleUnitTest {
     }
 
     fun confirmEasternRedbud_outputsEasternRedbud (){
-        var plant:Plant = Plant("Cercis","Canadesis","Eastern Redbud")
-        assertEquals("Eastern Redbud", plant.toString());
+        var job: Job = Job("Cercis","Canadesis","Eastern Redbud")
+        assertEquals("Eastern Redbud", job.toString());
     }
 }
