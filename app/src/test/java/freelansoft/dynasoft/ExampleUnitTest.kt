@@ -1,6 +1,6 @@
 package freelansoft.dynasoft
 
-import kotlinx.coroutines.Job
+import freelansoft.dynasoft.dto.Job
 import org.junit.Test
 
 import org.junit.Assert.*
