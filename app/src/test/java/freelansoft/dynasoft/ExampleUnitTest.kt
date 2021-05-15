@@ -14,4 +14,9 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    fun confirmEasternRedbud_outputsEasternRedbud (){
+        var plant:Plant = Plant("Cercis","Canadesis","Eastern Redbud")
+        assertEquals("Eastern Redbud", plant.toString());
+    }
 }

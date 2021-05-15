@@ -5,7 +5,6 @@
     <string name="ok">OK</string>
     <string name="supervisor">Supervisor</string>
     <string name="task">Task</string>
-<!--    <string name="date">Date</string>-->
     <string name="location">Location</string>
     <string name="date">Date</string>
     <string name="logout">Logout</string>
@@ -19,6 +18,19 @@
         <item>Server</item>
         <item>Reception</item>
         <item>Cashier</item>
+        <item>Consultation</item>
+        <item>Mutuel</item>
+        <item>Pharmacy</item>
+        <item>Labo</item>
+        <item>Maternity</item>
+        <item>CPN</item>
+        <item>Sante Mental</item>
+        <item>Administration </item>
+    </string-array>
+    <string-array name="task">
+        <item>New installation without Pharmacy</item>
+        <item>New installation with Pharmacy</item>
+        <item>New installation </item>
         <item>Consultation</item>
         <item>Mutuel</item>
         <item>Pharmacy</item>
