@@ -18,6 +18,6 @@ class ExampleUnitTest {
 
     fun confirmEasternRedbud_outputsEasternRedbud (){
         var job: Job = Job("Cercis","Canadesis","Eastern Redbud")
-        assertEquals("Eastern Redbud", job.toString());
+        assertEquals("Eastern Redbud", job.toString())
     }
 }
