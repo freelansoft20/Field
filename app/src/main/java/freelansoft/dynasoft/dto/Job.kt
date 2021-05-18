@@ -1,6 +1,8 @@
 package freelansoft.dynasoft.dto
 
-data class Job(var genus:String, var specimen:String, var common:String) {
+import com.google.gson.annotations.SerializedName
+
+data class Job(var genus:String, var species:String, var common:String, @SerializedName("Id") var jobId:Int = 0) {
     override fun toString(): String {
         return common
     }

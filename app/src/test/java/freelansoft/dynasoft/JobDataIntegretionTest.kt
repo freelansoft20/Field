@@ -1,11 +1,9 @@
 package freelansoft.dynasoft
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import freelansoft.dynasoft.dto.Job
 import freelansoft.dynasoft.service.JobService
 import freelansoft.dynasoft.ui.main.MainViewModel
-import io.mockk.every
 import io.mockk.mockk
 import org.junit.Test
 
@@ -18,7 +16,7 @@ import org.junit.rules.TestRule
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class JobDataUnitTest {
+class JobDataIntegretionTest {
     @get:Rule
     var rule:TestRule = InstantTaskExecutorRule()
     lateinit var mvm:MainViewModel
@@ -33,9 +31,13 @@ class JobDataUnitTest {
 
     @Test
     fun searchForRedbud_returnsRedbud(){
-        givenAFeedOfMockedJobDataAreAvailable()
+        givenAFeedOfJobDataAreAvailable()
         whenSearchForRedbud()
         thenResultsContainsEasternRedbud()
+    }
+
+    private fun whenSearchForRedbud() {
+        mvm.fetchJobs("Redbud")
     }
 
     private fun thenResultsContainsEasternRedbud() {
@@ -53,34 +55,14 @@ class JobDataUnitTest {
         assertTrue(redbudFound)
     }
 
-    private fun whenSearchForRedbud() {
-        mvm.fetchJobs("Redbud")
-    }
-
-    private fun givenAFeedOfMockedJobDataAreAvailable() {
+    private fun givenAFeedOfJobDataAreAvailable() {
         mvm = MainViewModel()
-        createMockData()
     }
 
-    private fun createMockData() {
-        var allJobsLiveData = MutableLiveData<ArrayList<Job>>()
-        var allJobs = ArrayList<Job>()
-        //create and add jobs to our collection
-        var redbud = Job("Cercis", "Canadensis", "Eastern Redbud")
-        allJobs.add(redbud)
-        var redoak = Job("Quercus", "Rubra", "Red oak")
-        allJobs.add(redoak)
-        var whiteoak = Job("Quercus", "alba", "white oak")
-        allJobs.add(whiteoak)
-        allJobsLiveData.postValue(allJobs)
-        every { jobService.fetchJobs(or("Redbud", "Quercus")) } returns allJobsLiveData
-        every { jobService.fetchJobs(not(or("Redbud", "Quercus")) )} returns MutableLiveData<ArrayList<Job>>()
-        mvm.jobService = jobService
-    }
 
     @Test
     fun SearchForGarbage_retutnsNothing(){
-        givenAFeedOfMockedJobDataAreAvailable()
+        givenAFeedOfJobDataAreAvailable()
         whenISearchForGabarge()
         thenIGetZeroResult()
     }
