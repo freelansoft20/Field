@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
@@ -37,7 +38,10 @@ class MainFragment : Fragment(), DateSelected {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel.jobs.observe(this, androidx.lifecycle.Observer {
+            jobs -> fieldTextDate.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, jobs))
+        })
+
 
         btnTextDate.setOnClickListener {
             showDatePicker()

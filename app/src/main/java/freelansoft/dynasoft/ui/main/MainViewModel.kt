@@ -9,6 +9,10 @@ class MainViewModel : ViewModel() {
     var jobs: MutableLiveData<ArrayList<Job>> = MutableLiveData<ArrayList<Job>>()
     var jobService : JobService = JobService()
 
+    init {
+        fetchJobs("e")
+    }
+
     fun fetchJobs(jobName: String) {
         jobs = jobService.fetchJobs(jobName)
     }
