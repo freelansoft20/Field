@@ -73,7 +73,8 @@ class JobDataUnitTest {
         var whiteoak = Job("Quercus", "alba", "white oak")
         allJobs.add(whiteoak)
         allJobsLiveData.postValue(allJobs)
-        every { jobService.fetchJobs(any<String>()) } returns allJobsLiveData
+        every { jobService.fetchJobs(or("Redbud", "Quercus")) } returns allJobsLiveData
+        every { jobService.fetchJobs(not(or("Redbud", "Quercus")) )} returns MutableLiveData<ArrayList<Job>>()
         mvm.jobService = jobService
     }
 
