@@ -11,12 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
 import freelansoft.dynasoft.R
+import freelansoft.dynasoft.dto.Work
 import java.util.*
-import kotlin.math.log
 import kotlinx.android.synthetic.main.main_fragment.*
 import java.text.SimpleDateFormat
 
@@ -39,12 +38,26 @@ class MainFragment : Fragment(), DateSelected {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel._jobs.observe(this, androidx.lifecycle.Observer {
-            jobs -> fieldTextDate.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, jobs))
+            jobs -> locationTextView.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, jobs))
         })
 
 
         btnTextDate.setOnClickListener {
             showDatePicker()
+        }
+
+        btnSave.setOnClickListener {
+            saveWork()
+        }
+    }
+
+    private fun saveWork() {
+        var work = Work().apply {
+            dateJob = btnTextDate.text.toString()
+            jobName = taskName.selectedItem.toString()
+            location= locationTextView.text.toString()
+            user = users.selectedItem.toString()
+
         }
     }
 
