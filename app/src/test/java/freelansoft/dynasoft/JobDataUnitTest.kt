@@ -37,10 +37,18 @@ class JobDataUnitTest {
         whenSearchForRedbud()
         thenResultsContainsEasternRedbud()
     }
+    private fun givenAFeedOfMockedJobDataAreAvailable() {
+        mvm = MainViewModel()
+        createMockData()
+    }
+
+    private fun whenSearchForRedbud() {
+        mvm.fetchJobs("Redbud")
+    }
 
     private fun thenResultsContainsEasternRedbud() {
         var redbudFound = false;
-        mvm.jobs.observeForever{
+        mvm._jobs.observeForever{
             // here is where we do the observing
             assertNotNull(it)
             assertTrue(it.size > 0)
@@ -51,15 +59,6 @@ class JobDataUnitTest {
             }
         }
         assertTrue(redbudFound)
-    }
-
-    private fun whenSearchForRedbud() {
-        mvm.fetchJobs("Redbud")
-    }
-
-    private fun givenAFeedOfMockedJobDataAreAvailable() {
-        mvm = MainViewModel()
-        createMockData()
     }
 
     private fun createMockData() {
@@ -90,7 +89,7 @@ class JobDataUnitTest {
     }
 
     private fun whenISearchForGabarge() {
-        mvm.jobs.observeForever{
+        mvm._jobs.observeForever{
             assertEquals(0, it.size)
         }
     }

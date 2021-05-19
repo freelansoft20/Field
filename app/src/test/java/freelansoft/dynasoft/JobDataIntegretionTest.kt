@@ -42,7 +42,7 @@ class JobDataIntegretionTest {
 
     private fun thenResultsContainsEasternRedbud() {
         var redbudFound = false;
-        mvm.jobs.observeForever{
+        mvm._jobs.observeForever{
             // here is where we do the observing
             assertNotNull(it)
             assertTrue(it.size > 0)
@@ -72,7 +72,7 @@ class JobDataIntegretionTest {
     }
 
     private fun whenISearchForGabarge() {
-        mvm.jobs.observeForever{
+        mvm._jobs.observeForever{
             assertEquals(0, it.size)
         }
     }

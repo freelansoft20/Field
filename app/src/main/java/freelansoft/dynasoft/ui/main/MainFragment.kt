@@ -38,7 +38,7 @@ class MainFragment : Fragment(), DateSelected {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.jobs.observe(this, androidx.lifecycle.Observer {
+        viewModel._jobs.observe(this, androidx.lifecycle.Observer {
             jobs -> fieldTextDate.setAdapter(ArrayAdapter(context!!, R.layout.support_simple_spinner_dropdown_item, jobs))
         })
 

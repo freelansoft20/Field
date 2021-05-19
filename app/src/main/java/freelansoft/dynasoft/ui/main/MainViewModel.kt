@@ -6,7 +6,7 @@ import freelansoft.dynasoft.dto.Job
 import freelansoft.dynasoft.service.JobService
 
 class MainViewModel : ViewModel() {
-    var jobs: MutableLiveData<ArrayList<Job>> = MutableLiveData<ArrayList<Job>>()
+    var _jobs: MutableLiveData<ArrayList<Job>> = MutableLiveData<ArrayList<Job>>()
     var jobService : JobService = JobService()
 
     init {
@@ -14,7 +14,9 @@ class MainViewModel : ViewModel() {
     }
 
     fun fetchJobs(jobName: String) {
-        jobs = jobService.fetchJobs(jobName)
+        _jobs = jobService.fetchJobs(jobName)
     }
-    // TODO: Implement the ViewModel
+    internal var job:MutableLiveData<ArrayList<Job>>
+        get() {return _jobs}
+        set(value) {_jobs=value}
 }
