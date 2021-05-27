@@ -1,8 +1,10 @@
 package freelansoft.dynasoft.ui.main
 
+import android.app.Activity.RESULT_OK
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +15,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
 import androidx.fragment.app.DialogFragment
+import com.firebase.ui.auth.AuthUI
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import freelansoft.dynasoft.R
 import freelansoft.dynasoft.dto.Work
 import java.util.*
@@ -21,12 +26,14 @@ import java.text.SimpleDateFormat
 
 class MainFragment : Fragment(), DateSelected {
 
+    private val AUTH_REQUEST_CODE = 2002
+    private var user : FirebaseUser? = null
+
     companion object {
         fun newInstance() = MainFragment()
     }
 
     private lateinit var viewModel: MainViewModel
-//    private lateinit var btnDateField: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -49,6 +56,19 @@ class MainFragment : Fragment(), DateSelected {
         btnSave.setOnClickListener {
             saveWork()
         }
+
+        btnLogin.setOnClickListener {
+            logon()
+        }
+    }
+
+    private fun logon() {
+        var provider = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build()
+        )
+        startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(provider).build(), AUTH_REQUEST_CODE
+        )
     }
 
     private fun saveWork() {
@@ -58,7 +78,8 @@ class MainFragment : Fragment(), DateSelected {
             location= locationTextView.text.toString()
             user = users.selectedItem.toString()
 
-        }
+            }
+        viewModel.save(work)
     }
 
     class DatePickerFragment(val dateSelected: DateSelected): DialogFragment(), DatePickerDialog.OnDateSetListener{
@@ -80,6 +101,15 @@ class MainFragment : Fragment(), DateSelected {
         }
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == RESULT_OK){
+            if (requestCode == AUTH_REQUEST_CODE){
+                user = FirebaseAuth.getInstance().currentUser
+            }
+        }
     }
 
     private fun showDatePicker() {

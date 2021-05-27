@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418828879468",
+    "project_id": "dynasoft-2d53a",
+    "storage_bucket": "dynasoft-2d53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418828879468:android:4fde7c7d5816de2b18fa49",
+        "android_client_info": {
+          "package_name": "freelansoft.dynasoft"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418828879468-sfg1p6kfe5ca9ugecii4o0lusa6vfeei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQUVber9RXCnDb5-0zhvlGhjGrvtOv56M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418828879468-sfg1p6kfe5ca9ugecii4o0lusa6vfeei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

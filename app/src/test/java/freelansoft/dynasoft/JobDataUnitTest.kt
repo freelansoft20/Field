@@ -27,8 +27,8 @@ class JobDataUnitTest {
 
     @Test
     fun confirmEasternRedbud_outputsEasternRedbud (){
-        var job: Job = Job("Cercis","Canadesis","Eastern Redbud")
-        assertEquals("Eastern Redbud", job.toString());
+        var _job: Job = Job("Cercis","Canadesis","Eastern Redbud")
+        assertEquals("Eastern Redbud", _job.toString());
     }
 
     @Test
